@@ -1,23 +1,18 @@
-package org.example;
+package java.org.example;
 
 /*
-* Une classe par faction
+* Une classe par faction => ok
 * Une classe abstraite pour saison
-* Fichiers configuration JSON
+* Fichier configuration JSON
 * une classe pour Industrie, Agriculture Tresorerie
-* fonction innitialisation pour valeurs default
+* fonction initialisation pour valeurs default
 * une classe pour la difficulté avec attribut enumeration
 * constante seuil
 * classe partisant avec attribut unité pour chaque
 *
 *
-*
-*
-*
-* LUNDI SOIR : Création des classes
-*
-*
-*
+* LUNDI SOIR : Création des classes =>ok
+* MERCREDI SOIR: classe abstraite pour saison...
 *
 *
 * */
