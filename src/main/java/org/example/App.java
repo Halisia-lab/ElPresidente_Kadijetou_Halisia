@@ -8,11 +8,12 @@ package java.org.example;
 * fonction initialisation pour valeurs default
 * une classe pour la difficulté avec attribut enumeration
 * constante seuil
-* classe partisant avec attribut unité pour chaque
+* classe partisan avec attribut unité pour chaque
 *
 *
 * LUNDI SOIR : Création des classes =>ok
 * MERCREDI SOIR: classe abstraite pour saison...
+* SAMEDI SOIR: valeur par defaut + class partisan + test
 *
 *
 * */
