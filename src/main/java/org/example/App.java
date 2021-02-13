@@ -3,7 +3,7 @@ package java.org.example;
 /*
 * Une classe par faction => ok
 * Une classe abstraite pour saison
-* Fichier configuration JSON
+* Fichier configuration JSON => ?
 * une classe pour Industrie, Agriculture Tresorerie
 * fonction initialisation pour valeurs default
 * une classe pour la difficulté avec attribut enumeration
@@ -17,6 +17,9 @@ package java.org.example;
 *
 *
 * */
+import java.io.*;
+
+
 public class App 
 {
     public static void main( String[] args )
