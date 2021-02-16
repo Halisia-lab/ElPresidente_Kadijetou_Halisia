@@ -36,6 +36,7 @@ public class AppTest {
         setUp();
         assertEquals("20 partisans have been eliminated.", kadIsland.randomPartisansElimination());
     }
+    
 
 
 }
