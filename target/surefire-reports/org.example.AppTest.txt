@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: org.example.AppTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.539 s <<< FAILURE! - in org.example.AppTest
+testRandomPartisansElimination(org.example.AppTest)  Time elapsed: 0.113 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[2]0 partisans have bee...> but was:<[9]0 partisans have bee...>
+	at org.example.AppTest.testRandomPartisansElimination(AppTest.java:38)
+
