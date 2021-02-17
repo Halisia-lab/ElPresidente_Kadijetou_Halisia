@@ -6,7 +6,7 @@ public class Agriculture implements ActivityArea {
     private int percentage;
 
     public Agriculture() {
-        this.percentage = 10;
+
     }
 
     @Override

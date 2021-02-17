@@ -6,7 +6,7 @@ public class Industry implements ActivityArea {
     int percentage;
 
     public Industry() {
-        this.percentage = 10;
+
     }
 
     @Override

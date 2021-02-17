@@ -2,20 +2,32 @@ package factions;
 import java.util.ArrayList;
 
 public abstract class Faction {
+    private String name;
     private int satisfaction;
     private int numberOfPartisans;
 
     public Faction () {
-        this.satisfaction = 15;
-        this.numberOfPartisans = 15;
+
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public int getSatisfaction() {
-        return satisfaction;
+        return this.satisfaction;
+    }
+
+    public void setSatisfaction(int satisfaction) {
+        this.satisfaction = satisfaction;
     }
 
     public int getNumberOfPartisans() {
-        return numberOfPartisans;
+        return this.numberOfPartisans;
+    }
+
+    public void setNumberOfPartisans(int number) {
+        this.numberOfPartisans = number;
     }
 
     public void eliminatePartisan() {

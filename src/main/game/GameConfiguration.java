@@ -1,26 +1,41 @@
 package game;
 
 import java.util.Scanner;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import factions.Faction;
+import factions.Loyalist;
+import islandcaracteristics.Island;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import static java.lang.Math.toIntExact;
+
 
 public class GameConfiguration {
 
     private int difficulty;
-    private JSONObject file;
+    private JSONObject initializationFile;
+    private JSONObject configurationFile;
+    private Island island;
 
-    public GameConfiguration() {
+    public GameConfiguration(Island island) {
+        this.island = island;
     }
 
-    public JSONObject getFile() {
-        return file;
+    public JSONObject getInitializationFileFile() {
+        return initializationFile;
+    }
+
+    public JSONObject getConfigurationFile() {
+        return configurationFile;
+    }
+
+    public Island getIsland() {
+        return island;
     }
 
     public int chooseDifficulty() {
@@ -43,7 +58,56 @@ public class GameConfiguration {
         return this.difficulty;
     }
 
-    public void setConfigurationFile(int difficulty) {
+
+    public void setBacASableMode() {
+        JSONParser jsonParser = new JSONParser();
+        try (FileReader reader = new FileReader("files/bacasable.json"))
+        {
+            //Read JSON file
+            Object obj = jsonParser.parse(reader);
+
+            JSONArray bacASableArray = (JSONArray) obj;
+
+            //Iterate over employee array
+            bacASableArray.forEach( bacASable -> importBacASableValues( (JSONObject) bacASable ));
+
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void importBacASableValues(JSONObject bacASable)
+    {
+        this.initializationFile = (JSONObject) bacASable.get("values");
+
+        Long satisfaction = (Long) this.initializationFile.get("satisfaction");
+        Long satisfactionLoyalists = (Long) this.initializationFile.get("satisfaction_loyalists");
+        Long partisansPerFaction = (Long) this.initializationFile.get("partisans_per_faction");
+        Long industry = (Long) this.initializationFile.get("industry_percentage");
+        Long agriculture = (Long) this.initializationFile.get("agriculture_percentage");
+        Long treasury = (Long) this.initializationFile.get("treasury");
+
+        //set up factions
+        for(Faction faction:this.island.getFactions()) {
+            faction.setNumberOfPartisans(toIntExact(partisansPerFaction));
+            if(faction.getName() == "loyalists" ) {
+                faction.setSatisfaction(toIntExact(satisfactionLoyalists));
+            } else {System.out.println("****"+faction.getName());
+                faction.setSatisfaction(toIntExact(satisfaction));
+            }
+
+        }
+
+        //set up indusrty, agriculture and treasury
+        this.island.getIndustry().setPercentage(toIntExact(industry));
+        this.island.getAgriculture().setPercentage(toIntExact(agriculture));
+        this.island.getTreasury().setMoneyAvailable(treasury);
+        System.out.println("treasury = "+ treasury+", agriculture = "+ agriculture);
+    }
+
+
+
+    public void setConfigurationFiles(int difficulty) {
         JSONParser jsonParser = new JSONParser();
         String fileName = "files/";
         switch (difficulty) {
@@ -65,25 +129,25 @@ public class GameConfiguration {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
 
-            JSONArray niveauList = (JSONArray) obj;
-            System.out.println(niveauList);
+            JSONArray fileArray = (JSONArray) obj;
+            System.out.println(fileArray);
 
             //Iterate over employee array
-            niveauList.forEach( niveau -> parseNiveauObject( (JSONObject) niveau ) );
+            fileArray.forEach( initialization -> parseDifficultyObject( (JSONObject) initialization ));
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }
 
-    private void parseNiveauObject(JSONObject niveau)
+    private void parseDifficultyObject(JSONObject difficulty)
     {
-        this.file = (JSONObject) niveau.get("bacASable");
+        this.configurationFile = (JSONObject) difficulty.get("bacASable");
 
-        Long satisfaction = (Long) this.file.get("satisfaction");
+        Long satisfaction = (Long) this.configurationFile.get("satisfaction");
         System.out.println(satisfaction);
 
-        Long satisfactionLoyalists = (Long) this.file.get("satisfaction_loyalists");
+        Long satisfactionLoyalists = (Long) this.configurationFile.get("satisfaction_loyalists");
         System.out.println(satisfactionLoyalists);
     }
 }
