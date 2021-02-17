@@ -30,41 +30,11 @@ import org.json.simple.parser.ParseException;
 
 public class App 
 {
-    public static void main( String[] args )
-    {
-        //JSON parser object to parse read file
-        JSONParser jsonParser = new JSONParser();
-
-        try (FileReader reader = new FileReader("files/init.json"))
-        {
-            //Read JSON file
-            Object obj = jsonParser.parse(reader);
-
-            JSONArray niveauList = (JSONArray) obj;
-            System.out.println(niveauList);
-
-            //Iterate over employee array
-            niveauList.forEach( niveau -> parseEmployeeObject( (JSONObject) niveau ) );
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public static void main( String[] args ) {
+        //set the game parameters
+        GameConfiguration parameters = new GameConfiguration();
+        parameters.setConfigurationFile(parameters.chooseDifficulty());
     }
 
-    private static void parseEmployeeObject(JSONObject niveau)
-    {
-        JSONObject niveauObject = (JSONObject) niveau.get("bacASable");
-
-        Long satisfaction = (Long) niveauObject.get("satisfaction");
-        System.out.println(satisfaction);
-
-        Long satisfactionLoyalists = (Long) niveauObject.get("satisfaction_loyalists");
-        System.out.println(satisfactionLoyalists);
-
-    }
 
 }

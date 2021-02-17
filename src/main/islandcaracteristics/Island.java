@@ -1,15 +1,17 @@
-package islandconfiguration;
+package islandcaracteristics;
 
 import factions.*;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Island {
 
     public static final int FOOD_UNIT_PER_PARTISAN = 4;
+
     private ArrayList<Faction> factions;
     private Agriculture agriculture;
+    private Industry industry;
+    private Treasury treasury;
 
     public Island() {
         this.factions = new ArrayList<Faction>();
@@ -19,8 +21,32 @@ public class Island {
         return this.factions;
     }
 
+    public Agriculture getAgriculture() {
+        return agriculture;
+    }
+
+    public Industry getIndustry() {
+        return industry;
+    }
+
+    public Treasury getTreasury() {
+        return treasury;
+    }
+
     public void setAgriculture(Agriculture agriculture) {
         this.agriculture = agriculture;
+    }
+
+    public void setIndustry(Industry industry) {
+        this.industry = industry;
+    }
+
+    public void setTreasury(Treasury treasury) {
+        this.treasury = treasury;
+    }
+
+    public Boolean checkPercentages() {
+        return this.industry.getPercentage() + this.agriculture.getPercentage() <= 100;
     }
 
     public void addFactions() {
