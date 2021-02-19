@@ -3,23 +3,21 @@ package islandcaracteristics;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import game.GameConfiguration;
 import org.junit.Test;
 
 public class AppTest {
 
     private Island kadIsland;
-    private  Agriculture agriculture;
-    private Industry industry;
+    private GameConfiguration parameters;
 
     @Test
     public void setUp()
     {
         kadIsland = new Island();
-        agriculture = new Agriculture();
-        industry = new Industry();
-        kadIsland.addFactions();
-        kadIsland.setAgriculture(agriculture);
-        kadIsland.setIndustry(industry);
+        //kadIsland.addFactions();
+        parameters = new GameConfiguration(kadIsland);
+        parameters.setBacASableMode();
     }
 
     @Test
@@ -31,13 +29,13 @@ public class AppTest {
     @Test
     public void testIsFoodEnough() {
         setUp();
-        assertEquals(false, kadIsland.isFoodUnitsEnough());
+        assertEquals(true, kadIsland.areFoodUnitsEnough());
     }
 
     @Test
     public void testRandomPartisansElimination() {
         setUp();
-        assertEquals("20 partisans have been eliminated.", kadIsland.randomPartisansElimination());
+        assertEquals("0 partisans have been eliminated.", kadIsland.randomPartisansElimination());
     }
 
     @Test
@@ -45,7 +43,6 @@ public class AppTest {
         setUp();
         assertEquals(true, kadIsland.checkPercentages());
     }
-
 
 
 }

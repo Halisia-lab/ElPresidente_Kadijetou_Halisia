@@ -1,4 +1,5 @@
 package islandcaracteristics;
+import java.util.Scanner;
 
 public class Treasury {
 
@@ -9,10 +10,12 @@ public class Treasury {
     }
 
     public double getMoneyAvailable() {
-        return moneyAvailable;
+        return this.moneyAvailable;
     }
 
     public void setMoneyAvailable(double moneyAvailable) {
         this.moneyAvailable = moneyAvailable;
     }
+
+
 }

@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import factions.Faction;
-import factions.Loyalist;
 import islandcaracteristics.Island;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -26,7 +25,7 @@ public class GameConfiguration {
         this.island = island;
     }
 
-    public JSONObject getInitializationFileFile() {
+    public JSONObject getInitializationFile() {
         return initializationFile;
     }
 
@@ -38,34 +37,12 @@ public class GameConfiguration {
         return island;
     }
 
-    public int chooseDifficulty() {
-        Boolean correctAnswer = false;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Please choose the difficulty:");
-        System.out.println("0: \"Bac à sable\"\n 1: Easy\n2: Medium\n3: Hard");
-
-        while(!correctAnswer) {
-            this.difficulty = sc.nextInt();
-            if(this.difficulty < 0 || this.difficulty > 3) {
-                System.out.println("Please choose between 0 and 3...");
-            } else {
-                correctAnswer = true;
-            }
-        }
-
-        System.out.println("You chose : " + this.difficulty);
-        sc.close();
-        return this.difficulty;
-    }
-
-
     public void setBacASableMode() {
         JSONParser jsonParser = new JSONParser();
+
         try (FileReader reader = new FileReader("files/bacasable.json"))
         {
-            //Read JSON file
             Object obj = jsonParser.parse(reader);
-
             JSONArray bacASableArray = (JSONArray) obj;
 
             //Iterate over employee array
@@ -80,40 +57,53 @@ public class GameConfiguration {
     {
         this.initializationFile = (JSONObject) bacASable.get("values");
 
-        Long satisfaction = (Long) this.initializationFile.get("satisfaction");
-        Long satisfactionLoyalists = (Long) this.initializationFile.get("satisfaction_loyalists");
-        Long partisansPerFaction = (Long) this.initializationFile.get("partisans_per_faction");
-        Long industry = (Long) this.initializationFile.get("industry_percentage");
-        Long agriculture = (Long) this.initializationFile.get("agriculture_percentage");
-        Long treasury = (Long) this.initializationFile.get("treasury");
+        int satisfaction = toIntExact((Long) this.initializationFile.get("satisfaction"));
+        int satisfactionLoyalists = toIntExact((Long) this.initializationFile.get("satisfaction_loyalists"));
+        int partisansPerFaction = toIntExact((Long) this.initializationFile.get("partisans_per_faction"));
+        int industry = toIntExact((Long) this.initializationFile.get("industry_percentage"));
+        int agriculture = toIntExact((Long) this.initializationFile.get("agriculture_percentage"));
+        int treasury = toIntExact((Long) this.initializationFile.get("treasury"));
 
         //set up factions
         for(Faction faction:this.island.getFactions()) {
             faction.setNumberOfPartisans(toIntExact(partisansPerFaction));
             if(faction.getName() == "loyalists" ) {
                 faction.setSatisfaction(toIntExact(satisfactionLoyalists));
-            } else {System.out.println("****"+faction.getName());
+            } else {
                 faction.setSatisfaction(toIntExact(satisfaction));
             }
-
         }
 
         //set up indusrty, agriculture and treasury
-        this.island.getIndustry().setPercentage(toIntExact(industry));
-        this.island.getAgriculture().setPercentage(toIntExact(agriculture));
+        this.island.getIndustry().setPercentage(industry);
+        this.island.getAgriculture().setPercentage(agriculture);
         this.island.getTreasury().setMoneyAvailable(treasury);
-        System.out.println("treasury = "+ treasury+", agriculture = "+ agriculture);
     }
 
+    public int chooseDifficulty() {
+        Boolean correctAnswer = false;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please choose the difficulty:");
+        System.out.println("1: Easy\n2: Medium\n3: Hard");
 
+        while(!correctAnswer) {
+            this.difficulty = sc.nextInt();
+            if(this.difficulty < 1 || this.difficulty > 3) {
+                System.out.println("Choose between 1 and 3...");
+            } else {
+                correctAnswer = true;
+            }
+        }
+
+        System.out.println("You chose : " + this.difficulty);
+        sc.close();
+        return this.difficulty;
+    }
 
     public void setConfigurationFiles(int difficulty) {
         JSONParser jsonParser = new JSONParser();
         String fileName = "files/";
         switch (difficulty) {
-            case 0:
-                fileName += "bacasable.json";
-                break;
             case 1:
                 fileName += "easy.json";
                 break;
