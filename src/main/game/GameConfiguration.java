@@ -10,6 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import year.Year;
 
 import static java.lang.Math.toIntExact;
 
@@ -17,12 +18,18 @@ import static java.lang.Math.toIntExact;
 public class GameConfiguration {
 
     private int difficulty;
+    private Island island;
+    //private Year year;
     private JSONObject initializationFile;
     private JSONObject configurationFile;
-    private Island island;
+    private String scenario;
+    private JSONArray events;
+    private int globalSatisfaction;
+    private JSONArray endOfYear;
 
-    public GameConfiguration(Island island) {
-        this.island = island;
+    public GameConfiguration() {
+        this.island = new Island();
+        //this.year = new Year();
     }
 
     public JSONObject getInitializationFile() {
@@ -36,6 +43,26 @@ public class GameConfiguration {
     public Island getIsland() {
         return island;
     }
+
+    public String getScenario() {
+        return scenario;
+    }
+
+    public JSONArray getEvents() {
+        return events;
+    }
+
+    public int getGlobalSatisfaction() {
+        return globalSatisfaction;
+    }
+
+    public JSONArray getEndOfYear() {
+        return endOfYear;
+    }
+
+    /*public Year getYear() {
+        return year;
+    }*/
 
     public void setBacASableMode() {
         JSONParser jsonParser = new JSONParser();
@@ -95,7 +122,6 @@ public class GameConfiguration {
             }
         }
 
-        System.out.println("You chose : " + this.difficulty);
         sc.close();
         return this.difficulty;
     }
@@ -119,25 +145,47 @@ public class GameConfiguration {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
 
-            JSONArray fileArray = (JSONArray) obj;
-            System.out.println(fileArray);
+            JSONObject fileObject = (JSONObject) obj;
 
-            //Iterate over employee array
-            fileArray.forEach( initialization -> parseDifficultyObject( (JSONObject) initialization ));
+
+            parseFile(fileObject);
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }
 
-    private void parseDifficultyObject(JSONObject difficulty)
+    public void parseFile(JSONObject file)
     {
-        this.configurationFile = (JSONObject) difficulty.get("bacASable");
+        this.configurationFile = (JSONObject) file.get("values");
+        this.scenario = (String) this.configurationFile.get("scenario_1");
+        this.globalSatisfaction = toIntExact((Long) this.configurationFile.get("global_satisfaction_required"));
+        this.events = (JSONArray) this.configurationFile.get("events");
+        this.endOfYear = (JSONArray) this.configurationFile.get("end_of_the_year");
+        //String satisfaction = (String) events.get("event");
+        //JSONObject event = (JSONObject) events.get(0);
+        /*Long satisfactionLoyalists = (Long) this.configurationFile.get("satisfaction_loyalists");
+        System.out.println(satisfactionLoyalists);*/
 
-        Long satisfaction = (Long) this.configurationFile.get("satisfaction");
-        System.out.println(satisfaction);
-
-        Long satisfactionLoyalists = (Long) this.configurationFile.get("satisfaction_loyalists");
-        System.out.println(satisfactionLoyalists);
     }
+
+    public Event createEvent(int index) {
+        JSONObject eventObject = (JSONObject) this.events.get(index);
+
+        Event event = new Event();
+        String title = (String) eventObject.get("event");
+        event.setTitle(title);
+
+        String season = (String) eventObject.get("season");
+        event.setSeason(season);
+
+        JSONArray choices = (JSONArray) eventObject.get("choices");
+        event.setChoices(choices);
+
+        return event;
+    }
+
+
+
+
 }
