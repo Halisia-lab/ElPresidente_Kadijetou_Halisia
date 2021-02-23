@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileReader;
 import java.io.IOException;
@@ -179,11 +180,60 @@ public class GameConfiguration {
         String season = (String) eventObject.get("season");
         event.setSeason(season);
 
-        JSONArray choices = (JSONArray) eventObject.get("choices");
-        event.setChoices(choices);
+        JSONArray JSONchoices = (JSONArray) eventObject.get("choices");
 
+        createEventChoices(JSONchoices);
+        event.setChoices(createEventChoices(JSONchoices));
+        containsFaction(event);
         return event;
     }
+
+    public ArrayList<Choice> createEventChoices(JSONArray JSONchoices) {
+        ArrayList<Choice> choices = new ArrayList<Choice>();
+        for(int i = 0; i < JSONchoices.size(); i++) {
+            JSONObject choiceObject = (JSONObject) JSONchoices.get(i);
+
+            Choice choice = new Choice();
+            String choiceTitle = (String) choiceObject.get("choice");
+            choice.setTitle(choiceTitle);
+
+            JSONObject positiveImpacts = (JSONObject) choiceObject.get("positive_impacts");
+
+            choice.setPositiveImpacts(positiveImpacts);
+
+            JSONObject negativeImpacts = (JSONObject) choiceObject.get("negative_impacts");
+            choice.setNegativeImpacts(negativeImpacts);
+
+
+            choices.add(choice);
+        }
+        return choices;
+    }
+
+    public void containsFaction(Event event) {
+        String faction = this.island.getCommunists().getName();
+        ArrayList<Choice> choices = event.getChoices();
+        Iterable<String> keys = choices.get(0).getPositiveImpacts().keySet();
+        for(String key: keys) {
+            if(faction.equals(key)) {
+                System.out.println("faction " + faction + " satisfaction before: " + island.getCommunists().getSatisfaction());
+                island.getCommunists().increaseSatisfaction(toIntExact((Long) choices.get(0).getPositiveImpacts().get(key)));
+                System.out.println("faction " + faction + " satisfaction before: " + island.getCommunists().getSatisfaction());
+
+
+            } else {
+
+                System.out.println(key);
+            }
+
+        }
+    }
+
+
+
+
+
+
 
 
 

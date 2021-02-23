@@ -34,7 +34,7 @@ public class App
         parameters.setBacASableMode();
 
         Year year = new Year(parameters);
-        year.printEventTitle();
+        //year.printRandomEvent();
 
     }
 

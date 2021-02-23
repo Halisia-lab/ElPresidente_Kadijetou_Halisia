@@ -182,6 +182,16 @@ public class Island {
         return (int) numberOfBirths + " births were counted.";
     }
 
+    public void randomBirthsRepartition(int number) {
+        double extraPartisans = number;
+        int numberOfBirths = (int)extraPartisans;
+        while (extraPartisans >= 1) {
+            Faction randomFaction = getRandomFaction(this.factions);
+            randomFaction.setNumberOfPartisans(randomFaction.getNumberOfPartisans() + 1);
+            extraPartisans--;
+        }
+    }
+
     public void purchaseFoodUnits() {
         Scanner sc = new Scanner(System.in);
         Boolean enoughMoney = false;

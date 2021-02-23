@@ -16,9 +16,10 @@ public class Agriculture implements ActivityArea {
 
     @Override
     public void setPercentage(int percentage) {
-        if(percentage <= 100 && percentage >= 0) {
             this.percentage = percentage;
-        }
+            if(percentage < 0) {
+                percentage = 0;
+            }
     }
 
     @Override

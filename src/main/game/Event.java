@@ -4,10 +4,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import year.SeasonEnum;
 
+import java.util.ArrayList;
+
 public class Event {
     private String title;
     private String season;
-    private JSONArray choices;
+    private ArrayList<Choice> choices;
 
     public Event() {
 
@@ -21,7 +23,7 @@ public class Event {
         return season;
     }
 
-    public JSONArray getChoices() {
+    public ArrayList<Choice> getChoices() {
         return choices;
     }
 
@@ -33,9 +35,18 @@ public class Event {
         this.season = season;
     }
 
-    public void setChoices(JSONArray choices) {
+    public void setChoices(ArrayList<Choice> choices) {
         this.choices = choices;
     }
+
+
+
+    /*public void createChoices() {
+        for(Object choiceObject: this.choices) {
+            Choice choice = new Choice();
+            String title = (String) this.choices.get("choice");
+        }
+    }*/
 
 
 }

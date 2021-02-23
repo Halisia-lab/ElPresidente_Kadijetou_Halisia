@@ -46,12 +46,11 @@
               {
                 "choice": "1. Import a lot of food units, what matters is that we eat !",
                 "positive_impacts": {},
-                "negative_impacts": [
+                "negative_impacts":
                   {
                     "treasury": 100,
                     "ecologists": 30
                   }
-                ]
               },
               {
                 "choice": "2. Reduce everyone food portions",
@@ -97,11 +96,10 @@
                   "liberals": 20,
                   "religious": 20
                 },
-                "negative_impacts": [
+                "negative_impacts":
                   {
                     "treasury": 200
                   }
-                ]
               },
               {
                 "choice": "2. Implement security measures without alert the population to avoid a panic movement",
@@ -115,7 +113,6 @@
                   "communists": 20,
                   "liberals": 20,
                   "nationalists": 15
-
                 }
               },
               {
@@ -149,13 +146,12 @@
                   "nationalists": 15,
                   "ecologists": 20
                 },
-                "negative_impacts": [
+                "negative_impacts":
                   {
                     "militarists": 10,
                     "religious": 10,
                     "liberals": 15
                   }
-                ]
               },
               {
                 "choice": "2. That is true that this place is missing some animation, let's do it !",
@@ -175,7 +171,7 @@
                 }
               },
               {
-                "choice": "3. This decision belongs to the citizens, i trust them",
+                "choice": "3. This decision belongs to the citizens, I trust them",
                 "positive_impacts":
                 {
                   "communists": 30,
@@ -185,7 +181,7 @@
                   "militarists": 20,
                   "loyalists": 15,
                   "liberals": 20,
-                  "religious": 20,
+                  "religious": 20
                 },
                 "negative_impacts":
                 {}
@@ -204,14 +200,13 @@
                   "nationalists": 20,
                   "liberals": 15
                 },
-                "negative_impacts": [
+                "negative_impacts":
                   {
                     "militarists": 10,
                     "religious": 10,
                     "ecologists": 35,
                     "treasury": 150
                   }
-                ]
               },
               {
                 "choice": "2. Don't touch..a president don't steal",
@@ -256,11 +251,10 @@
                   "militarists": 10,
                   "loyalists": 10
                 },
-                "negative_impacts": [
+                "negative_impacts":
                   {
                     "treasury": 90
                   }
-                ]
               },
               {
                 "choice": "2. Just a few things because christmas costs a lot of money",
