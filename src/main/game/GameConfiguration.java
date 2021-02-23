@@ -116,14 +116,13 @@ public class GameConfiguration {
 
         while(!correctAnswer) {
             this.difficulty = sc.nextInt();
+
             if(this.difficulty < 1 || this.difficulty > 3) {
                 System.out.println("Choose between 1 and 3...");
             } else {
                 correctAnswer = true;
             }
         }
-
-        sc.close();
         return this.difficulty;
     }
 
@@ -163,11 +162,6 @@ public class GameConfiguration {
         this.globalSatisfaction = toIntExact((Long) this.configurationFile.get("global_satisfaction_required"));
         this.events = (JSONArray) this.configurationFile.get("events");
         this.endOfYear = (JSONArray) this.configurationFile.get("end_of_the_year");
-        //String satisfaction = (String) events.get("event");
-        //JSONObject event = (JSONObject) events.get(0);
-        /*Long satisfactionLoyalists = (Long) this.configurationFile.get("satisfaction_loyalists");
-        System.out.println(satisfactionLoyalists);*/
-
     }
 
     public Event createEvent(int index) {
@@ -182,9 +176,8 @@ public class GameConfiguration {
 
         JSONArray JSONchoices = (JSONArray) eventObject.get("choices");
 
-        createEventChoices(JSONchoices);
-        event.setChoices(createEventChoices(JSONchoices));
-        containsFaction(event);
+        ArrayList<Choice> choices = createEventChoices(JSONchoices);
+        event.setChoices(choices);
         return event;
     }
 
@@ -204,38 +197,17 @@ public class GameConfiguration {
             JSONObject negativeImpacts = (JSONObject) choiceObject.get("negative_impacts");
             choice.setNegativeImpacts(negativeImpacts);
 
-
             choices.add(choice);
         }
         return choices;
     }
 
-    public void containsFaction(Event event) {
-        String faction = this.island.getCommunists().getName();
-        ArrayList<Choice> choices = event.getChoices();
-        Iterable<String> keys = choices.get(0).getPositiveImpacts().keySet();
-        for(String key: keys) {
-            if(faction.equals(key)) {
-                System.out.println("faction " + faction + " satisfaction before: " + island.getCommunists().getSatisfaction());
-                island.getCommunists().increaseSatisfaction(toIntExact((Long) choices.get(0).getPositiveImpacts().get(key)));
-                System.out.println("faction " + faction + " satisfaction before: " + island.getCommunists().getSatisfaction());
-
-
-            } else {
-
-                System.out.println(key);
-            }
-
+    public void checkGlobalSatisfaction() {
+        if(this.getIsland().getGlobalSatisfaction() >= this.globalSatisfaction) {
+            System.out.println("The global satisfaction is " + this.getIsland().getGlobalSatisfaction() + "%") ;
+        } else {
+            System.out.println("You loose... there is only " + this.getIsland().getGlobalSatisfaction() + "% of satisfaction");
         }
     }
-
-
-
-
-
-
-
-
-
 
 }

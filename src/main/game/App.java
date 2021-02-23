@@ -34,8 +34,12 @@ public class App
         parameters.setBacASableMode();
 
         Year year = new Year(parameters);
-        //year.printRandomEvent();
 
+        //Start the game for 3 years
+        for(int i = 1; i <= 3; i++) {
+            year.playSeasons();
+        }
+        parameters.checkGlobalSatisfaction();
     }
 
 

@@ -40,92 +40,77 @@ public class Choice {
         this.negativeImpacts = negativeImpacts;
     }
 
-    public void setPositiveImpacts(Island island) {
-        Iterable<String> keys = this.positiveImpacts.keySet();
-        for(String key: keys) {
+    public void applyImpacts(Island island) {
+        Iterable<String> keysPositive = this.positiveImpacts.keySet();
+        for(String key: keysPositive) {
             if(key.equals("numberOfPartisans")) {
                 island.randomBirthsRepartition(toIntExact((Long) this.positiveImpacts.get(key)));
             }
         }
-    }
-
-    public void setPositiveImpacts(Faction faction) {
-        Iterable<String> keys = this.positiveImpacts.keySet();
-        for(String key: keys) {
-            if(faction.getName().equals(key)) {
-                faction.increaseSatisfaction(toIntExact((Long) this.positiveImpacts.get(key)));
-            }
-        }
-    }
-
-    public void setPositiveImpacts(Industry industry) {
-        Iterable<String> keys = this.positiveImpacts.keySet();
-        for(String key: keys) {
-            if(key.equals("industry")) {
-                industry.setPercentage(industry.getPercentage() + toIntExact((Long) this.positiveImpacts.get(key)));
-            }
-        }
-    }
-
-    public void setPositiveImpacts(Agriculture agriculture) {
-        Iterable<String> keys = this.positiveImpacts.keySet();
-        for(String key: keys) {
-            if(key.equals("industry")) {
-                agriculture.setPercentage(agriculture.getPercentage() + toIntExact((Long) this.positiveImpacts.get(key)));
-            }
-        }
-    }
-
-    public void setPositiveImpacts(Treasury treasury) {
-        Iterable<String> keys = this.positiveImpacts.keySet();
-        for(String key: keys) {
-            if(key.equals("treasury")) {
-                treasury.setMoneyAvailable(treasury.getMoneyAvailable() + toIntExact((Long) this.positiveImpacts.get(key)));
-            }
-        }
-    }
-
-    public void setNegativeImpacts(Faction faction) {
-        Iterable<String> keys = this.positiveImpacts.keySet();
-        for(String key: keys) {
-            if(faction.getName().equals(key)) {
-                faction.increaseSatisfaction(toIntExact((Long) this.positiveImpacts.get(key)));
-            }
-        }
-    }
-
-    public void setNegativeImpacts(Industry industry) {
-        Iterable<String> keys = this.positiveImpacts.keySet();
-        for(String key: keys) {
-            if(key.equals("industry")) {
-                industry.setPercentage(industry.getPercentage() + toIntExact((Long) this.positiveImpacts.get(key)));
-            }
-        }
-    }
-
-    public void setNegativeImpacts(Agriculture agriculture) {
-        Iterable<String> keys = this.positiveImpacts.keySet();
-        for(String key: keys) {
-            if(key.equals("industry")) {
-                agriculture.setPercentage(agriculture.getPercentage() + toIntExact((Long) this.positiveImpacts.get(key)));
-            }
-        }
-    }
-
-    public void setNegativeImpacts(Treasury treasury) {
-        Iterable<String> keys = this.positiveImpacts.keySet();
-        for(String key: keys) {
-            if(key.equals("treasury")) {
-                treasury.setMoneyAvailable(treasury.getMoneyAvailable() + toIntExact((Long) this.positiveImpacts.get(key)));
-            }
-        }
-    }
-
-    public void setNegativeImpacts(Island island) {
-        Iterable<String> keys = this.positiveImpacts.keySet();
-        for(String key: keys) {
+        Iterable<String> keysNegative = this.negativeImpacts.keySet();
+        for(String key: keysNegative) {
             if(key.equals("numberOfPartisans")) {
-                island.randomBirthsRepartition(toIntExact((Long) this.positiveImpacts.get(key)));
+                island.randomPartisansElimination(toIntExact((Long) this.negativeImpacts.get(key)));
+            }
+        }
+    }
+
+    public void applyImpacts(Faction faction) {
+        Iterable<String> keysPositive = this.positiveImpacts.keySet();
+        for(String key: keysPositive) {
+            if(faction.getName().equals(key)) {
+                faction.increaseSatisfaction(toIntExact((Long) this.positiveImpacts.get(key)));
+            }
+        }
+        Iterable<String> keysNegative = this.negativeImpacts.keySet();
+        for(String key: keysNegative) {
+            if(faction.getName().equals(key)) {
+                faction.decreaseSatisfaction(toIntExact((Long) this.negativeImpacts.get(key)));
+            }
+        }
+    }
+
+    public void applyImpacts(Industry industry) {
+        Iterable<String> keysPositive = this.positiveImpacts.keySet();
+        for(String key: keysPositive) {
+            if(key.equals("industry")) {
+            industry.setPercentage(industry.getPercentage() + toIntExact((Long) this.positiveImpacts.get(key)));
+        }
+    }
+        Iterable<String> keysNegative = this.negativeImpacts.keySet();
+        for(String key: keysNegative) {
+            if(key.equals("industry")) {
+                industry.setPercentage(industry.getPercentage() - toIntExact((Long) this.negativeImpacts.get(key)));
+            }
+        }
+    }
+
+    public void applyImpacts(Agriculture agriculture) {
+        Iterable<String> keysPositive = this.positiveImpacts.keySet();
+        for(String key: keysPositive) {
+            if(key.equals("industry")) {
+                agriculture.setPercentage(agriculture.getPercentage() + toIntExact((Long) this.positiveImpacts.get(key)));
+            }
+        }
+        Iterable<String> keysNegative = this.negativeImpacts.keySet();
+        for(String key: keysNegative) {
+            if(key.equals("industry")) {
+                agriculture.setPercentage(agriculture.getPercentage() - toIntExact((Long) this.negativeImpacts.get(key)));
+            }
+        }
+    }
+
+    public void applyImpacts(Treasury treasury) {
+        Iterable<String> keysPositive = this.positiveImpacts.keySet();
+        for(String key: keysPositive) {
+            if(key.equals("treasury")) {
+                treasury.setMoneyAvailable(treasury.getMoneyAvailable() + toIntExact((Long) this.positiveImpacts.get(key)));
+            }
+        }
+        Iterable<String> keysNegative = this.negativeImpacts.keySet();
+        for(String key: keysNegative) {
+            if(key.equals("treasury")) {
+                treasury.setMoneyAvailable(treasury.getMoneyAvailable() - toIntExact((Long) this.negativeImpacts.get(key)));
             }
         }
     }

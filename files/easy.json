@@ -98,7 +98,7 @@
                 },
                 "negative_impacts":
                   {
-                    "treasury": 200
+                    "treasury": 100
                   }
               },
               {
@@ -124,7 +124,6 @@
                 "negative_impacts":
                 {
                   "numberOfPartisans": 10,
-                  "treasury": 180,
                   "loyalists": 30,
                   "communists": 20,
                   "liberals": 20,
@@ -240,7 +239,7 @@
             "season": "winter",
             "choices": [
               {
-                "choice": "1. Trust them, sitizens will be glad",
+                "choice": "1. Trust them, citizens will be glad",
                 "positive_impacts": {
                   "nationalists": 10,
                   "liberals": 10,

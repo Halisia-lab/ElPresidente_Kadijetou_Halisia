@@ -103,16 +103,17 @@ public class Island {
         return this.industry.getPercentage() + this.agriculture.getPercentage() <= 100;
     }
 
-    /*public void addFactions() {
-        factions.add(communists);
-        factions.add(capitalists);
-        factions.add(ecologists);
-        factions.add(liberals);
-        factions.add(loyalists);
-        factions.add(militarists);
-        factions.add(nationalists);
-        factions.add(religious);
-    }*/
+    public void printFactions() {
+        System.out.println("Factions | Satisfaction | Partisans");
+        for(Faction faction: this.factions) {
+            System.out.println(faction.getName() + " | " + faction.getSatisfaction()+"% | " + faction.getNumberOfPartisans());
+        }
+        System.out.println("Industry : " + this.industry.getPercentage() + "%");
+        System.out.println("Agriculture : " + this.agriculture.getPercentage() + "%");
+        System.out.println("Treasury : " + this.treasury.getMoneyAvailable() + "$");
+        System.out.println("Total number of partisans : " + this.getNumberOfPartisans());
+        System.out.println("");
+    }
 
 
     public int getNumberOfPartisans() {
@@ -169,6 +170,23 @@ public class Island {
         return numberOfEliminations + " partisans have been eliminated.";
     }
 
+    public void  randomPartisansElimination(int number) {
+        double extraPartisans = (number / 100) * this.getNumberOfPartisans();
+        if(extraPartisans < 0) {
+            extraPartisans = 0;
+        }
+        int numberOfEliminations = (int)extraPartisans;
+
+        while (extraPartisans > 0) {
+            Faction randomFaction = getRandomFaction(this.factions);
+            if(randomFaction.getNumberOfPartisans() > 0) {
+                randomFaction.eliminatePartisan();
+                extraPartisans--;
+                this.decreaseAllSatisfactions(2);
+            }
+        }
+    }
+
     public String randomBirthsRepartition() {
         System.out.println("There is a lot of agriculture ! New births are coming...");
         double randomPercentage = ThreadLocalRandom.current().nextInt(1, 10 + 1);
@@ -183,7 +201,8 @@ public class Island {
     }
 
     public void randomBirthsRepartition(int number) {
-        double extraPartisans = number;
+
+        double extraPartisans = (number / 100) * this.getNumberOfPartisans();
         int numberOfBirths = (int)extraPartisans;
         while (extraPartisans >= 1) {
             Faction randomFaction = getRandomFaction(this.factions);
