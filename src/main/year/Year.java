@@ -23,6 +23,10 @@ public class Year {
         return this.season;
     }
 
+    public GameConfiguration getGame() {
+        return game;
+    }
+
     public void playSeasons() {
         for (SeasonEnum season : SeasonEnum.values()) {
             System.out.println("--------------------------------------------\nWE ARE IN " + season + "\n");

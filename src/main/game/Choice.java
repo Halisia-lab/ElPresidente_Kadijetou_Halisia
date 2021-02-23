@@ -5,6 +5,8 @@ import islandcaracteristics.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.util.ArrayList;
+
 import static java.lang.Math.toIntExact;
 
 public class Choice {
@@ -62,6 +64,7 @@ public class Choice {
                 faction.increaseSatisfaction(toIntExact((Long) this.positiveImpacts.get(key)));
             }
         }
+
         Iterable<String> keysNegative = this.negativeImpacts.keySet();
         for(String key: keysNegative) {
             if(faction.getName().equals(key)) {

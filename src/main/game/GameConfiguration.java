@@ -164,6 +164,10 @@ public class GameConfiguration {
         this.endOfYear = (JSONArray) this.configurationFile.get("end_of_the_year");
     }
 
+    public void printScenario() {
+        System.out.println(this.scenario);
+    }
+
     public Event createEvent(int index) {
         JSONObject eventObject = (JSONObject) this.events.get(index);
 
@@ -202,12 +206,12 @@ public class GameConfiguration {
         return choices;
     }
 
-    public void checkGlobalSatisfaction() {
-        if(this.getIsland().getGlobalSatisfaction() >= this.globalSatisfaction) {
-            System.out.println("The global satisfaction is " + this.getIsland().getGlobalSatisfaction() + "%") ;
-        } else {
+    public Boolean isGlobalSatisfaction() {
+        Boolean isGlobalSatisfaction = this.getIsland().getGlobalSatisfaction() >= this.globalSatisfaction;
+        if (!isGlobalSatisfaction) {
             System.out.println("You loose... there is only " + this.getIsland().getGlobalSatisfaction() + "% of satisfaction");
         }
+        return isGlobalSatisfaction;
     }
 
 }

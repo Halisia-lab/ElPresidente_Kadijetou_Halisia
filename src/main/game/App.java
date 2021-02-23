@@ -35,11 +35,12 @@ public class App
 
         Year year = new Year(parameters);
 
-        //Start the game for 3 years
-        for(int i = 1; i <= 3; i++) {
+        year.getGame().printScenario();
+
+        //Start the game for 2 years
+        while(parameters.isGlobalSatisfaction()) {
             year.playSeasons();
         }
-        parameters.checkGlobalSatisfaction();
     }
 
 

@@ -41,12 +41,4 @@ public class Event {
 
 
 
-    /*public void createChoices() {
-        for(Object choiceObject: this.choices) {
-            Choice choice = new Choice();
-            String title = (String) this.choices.get("choice");
-        }
-    }*/
-
-
 }

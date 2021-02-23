@@ -215,7 +215,7 @@ public class Island {
         Scanner sc = new Scanner(System.in);
         Boolean enoughMoney = false;
         int quantity = 0, totalAmount = 0;
-        System.out.println("How many food units do you want to buy ? You have " + this.treasury.getMoneyAvailable());
+        System.out.println("How many food units do you want to buy ? You have " + this.treasury.getMoneyAvailable() +"$");
         do {
             quantity = sc.nextInt();
             totalAmount = quantity * FOOD_UNIT_PRICE;
@@ -228,9 +228,7 @@ public class Island {
         } while (!enoughMoney);
         this.treasury.setMoneyAvailable(this.treasury.getMoneyAvailable() - totalAmount);
         this.purchasedFoodUnits += quantity;
-
         System.out.println("You bougth " + quantity + " food units, " + this.treasury.getMoneyAvailable() + "$ are left.");
-        sc.close();
     }
 
     public void organizeABribe(Faction faction) {
@@ -239,8 +237,6 @@ public class Island {
             System.out.println("You don't have enough money...");
         } else {
             int loyalistsSatisfactionDecreased = price / 10;
-            //15$ per partisans
-            System.out.println("price: "+ price);
             this.treasury.setMoneyAvailable(this.treasury.getMoneyAvailable() - price);
 
             //+10% satisfaction
@@ -252,9 +248,6 @@ public class Island {
             System.out.println(faction.getName() + " has +" + INCREASED_SATISFACTION_AFTER_BRIBE +"% satisfaction after the bribe ! " );
             System.out.println(this.getLoyalists().getName() + " has -" + loyalistsSatisfactionDecreased +"% satisfaction... " );
             System.out.println(this.treasury.getMoneyAvailable() + "$ are left.");
-            for(Faction oneFaction:this.getFactions()){
-                System.out.println(oneFaction.getName() +": "+oneFaction.getSatisfaction());
-            }
         }
 
     }
