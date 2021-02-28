@@ -68,21 +68,19 @@ public class GameConfiguration {
     public void setBacASableMode() {
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader("files/bacasable.json"))
-        {
+        try (FileReader reader = new FileReader("files/bacasable.json")) {
             Object obj = jsonParser.parse(reader);
             JSONArray bacASableArray = (JSONArray) obj;
 
             //Iterate over employee array
-            bacASableArray.forEach( bacASable -> importBacASableValues( (JSONObject) bacASable ));
+            bacASableArray.forEach(bacASable -> importBacASableValues((JSONObject) bacASable));
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }
 
-    private void importBacASableValues(JSONObject bacASable)
-    {
+    private void importBacASableValues(JSONObject bacASable) {
         this.initializationFile = (JSONObject) bacASable.get("values");
 
         int satisfaction = toIntExact((Long) this.initializationFile.get("satisfaction"));
@@ -93,9 +91,9 @@ public class GameConfiguration {
         int treasury = toIntExact((Long) this.initializationFile.get("treasury"));
 
         //set up factions
-        for(Faction faction:this.island.getFactions()) {
+        for (Faction faction : this.island.getFactions()) {
             faction.setNumberOfPartisans(toIntExact(partisansPerFaction));
-            if(faction.getName() == "loyalists" ) {
+            if (faction.getName() == "loyalists") {
                 faction.setSatisfaction(toIntExact(satisfactionLoyalists));
             } else {
                 faction.setSatisfaction(toIntExact(satisfaction));
@@ -114,10 +112,10 @@ public class GameConfiguration {
         System.out.println("Please choose the difficulty:");
         System.out.println("1: Easy\n2: Medium\n3: Hard");
 
-        while(!correctAnswer) {
+        while (!correctAnswer) {
             this.difficulty = sc.nextInt();
 
-            if(this.difficulty < 1 || this.difficulty > 3) {
+            if (this.difficulty < 1 || this.difficulty > 3) {
                 System.out.println("Choose between 1 and 3...");
             } else {
                 correctAnswer = true;
@@ -140,8 +138,7 @@ public class GameConfiguration {
                 fileName += "hard.json";
         }
 
-        try (FileReader reader = new FileReader(fileName))
-        {
+        try (FileReader reader = new FileReader(fileName)) {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
 
@@ -155,8 +152,7 @@ public class GameConfiguration {
         }
     }
 
-    public void parseFile(JSONObject file)
-    {
+    public void parseFile(JSONObject file) {
         this.configurationFile = (JSONObject) file.get("values");
         this.scenario = (String) this.configurationFile.get("scenario_1");
         this.globalSatisfaction = toIntExact((Long) this.configurationFile.get("global_satisfaction_required"));
@@ -187,7 +183,7 @@ public class GameConfiguration {
 
     public ArrayList<Choice> createEventChoices(JSONArray JSONchoices) {
         ArrayList<Choice> choices = new ArrayList<Choice>();
-        for(int i = 0; i < JSONchoices.size(); i++) {
+        for (int i = 0; i < JSONchoices.size(); i++) {
             JSONObject choiceObject = (JSONObject) JSONchoices.get(i);
 
             Choice choice = new Choice();
@@ -212,6 +208,25 @@ public class GameConfiguration {
             System.out.println("You loose... there is only " + this.getIsland().getGlobalSatisfaction() + "% of satisfaction");
         }
         return isGlobalSatisfaction;
+    }
+
+    public Boolean replay() {
+        Boolean correctAnswer = false;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Do you want replay ? yes/no");
+            String choice = sc.next();
+            while (!(choice.equals("yes") || choice.equals("no"))) {
+
+                System.out.println("Please answer \"yes\" or \"no\"");
+                choice = sc.next();
+            }
+
+        if(choice.equals("yes")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
