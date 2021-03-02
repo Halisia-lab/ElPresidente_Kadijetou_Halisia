@@ -15,7 +15,7 @@ public class AppTest {
     {
         //kadIsland.addFactions();
         parameters = new GameConfiguration();
-        parameters.setBacASableMode();
+        parameters.initialization();
     }
 
     @Test

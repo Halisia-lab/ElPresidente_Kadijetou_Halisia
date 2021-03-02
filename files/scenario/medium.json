@@ -1,7 +1,7 @@
 
 {
   "values" : {
-    "scenario_1" : "The island is spotted by tens of castaways who would like to stay here forever. You and the citizens are learning to live with them...",
+    "scenario_1" : "Theme : The island is spotted by tens of castaways who would like to stay here forever. You and the citizens are learning to live with them...",
     "scenario_2" : "",
     "global_satisfaction_required" : 25,
     "events" : [

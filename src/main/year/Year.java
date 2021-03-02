@@ -13,10 +13,12 @@ import game.GameConfiguration;
 public class Year {
     private SeasonEnum season;
     private GameConfiguration game;
+    private int currentEvent;
 
     public Year(GameConfiguration game) {
         this.season = SeasonEnum.WINTER;
         this.game = game;
+        this.currentEvent = 0;
     }
 
     public SeasonEnum getSeason() {
@@ -31,7 +33,12 @@ public class Year {
         for (SeasonEnum season : SeasonEnum.values()) {
             System.out.println("--------------------------------------------\nWE ARE IN " + season + "\n");
             this.game.getIsland().printFactions();
-            Event newEvent = printRandomEvent();
+            Event newEvent = new Event();
+            if(this.game.getMode() == 1) {
+                newEvent = printRandomEvent();
+            } else {
+                newEvent = printNextEvent();
+            }
             int choiceNumber = chooseAChoice(newEvent) - 1;
             newEvent.getChoices().get(choiceNumber).applyImpacts(game.getIsland());
             newEvent.getChoices().get(choiceNumber).applyImpacts(game.getIsland().getAgriculture());
@@ -59,6 +66,19 @@ public class Year {
         System.out.println("");
         return event;
     }
+
+    public Event printNextEvent() {
+        Event event = this.game.createEvent(this.currentEvent);
+        System.out.println(event.getTitle());
+        for (Choice choice : event.getChoices()) {
+            System.out.println(choice.getTitle());
+        }
+        System.out.println("");
+        this.currentEvent++;
+        return event;
+    }
+
+
 
     public int chooseAChoice(Event event) {
         int choice = 0, choicesLength = event.getChoices().size();

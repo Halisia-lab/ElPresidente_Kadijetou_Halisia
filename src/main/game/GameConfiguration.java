@@ -19,8 +19,8 @@ import static java.lang.Math.toIntExact;
 public class GameConfiguration {
 
     private int difficulty;
+    private int mode; //sandbox = 1/scenario = 2
     private Island island;
-    //private Year year;
     private JSONObject initializationFile;
     private JSONObject configurationFile;
     private String scenario;
@@ -30,7 +30,6 @@ public class GameConfiguration {
 
     public GameConfiguration() {
         this.island = new Island();
-        //this.year = new Year();
     }
 
     public JSONObject getInitializationFile() {
@@ -61,14 +60,14 @@ public class GameConfiguration {
         return endOfYear;
     }
 
-    /*public Year getYear() {
-        return year;
-    }*/
+    public int getMode() {
+        return this.mode;
+    }
 
-    public void setBacASableMode() {
+    public void initialization() {
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader("files/bacasable.json")) {
+        try (FileReader reader = new FileReader("files/default_values.json")) {
             Object obj = jsonParser.parse(reader);
             JSONArray bacASableArray = (JSONArray) obj;
 
@@ -124,9 +123,33 @@ public class GameConfiguration {
         return this.difficulty;
     }
 
-    public void setConfigurationFiles(int difficulty) {
+    public int chooseMode() {
+        Boolean correctAnswer = false;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please choose the mode :");
+        System.out.println("1: Sandbox\n2: Scenario\n");
+
+        while (!correctAnswer) {
+            this.mode = sc.nextInt();
+
+            if (this.mode < 1 || this.mode > 2) {
+                System.out.println("Choose between 1 and 2...");
+            } else {
+                correctAnswer = true;
+            }
+        }
+        return this.mode;
+    }
+
+    public void setConfigurationFiles(int difficulty, int mode) {
         JSONParser jsonParser = new JSONParser();
-        String fileName = "files/";
+        String modeName = "";
+        if(mode == 1) {
+            modeName = "sandbox/";
+        } else {
+            modeName = "scenario/";
+        }
+        String fileName = "files/" + modeName;
         switch (difficulty) {
             case 1:
                 fileName += "easy.json";

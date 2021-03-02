@@ -8,8 +8,8 @@ public class App
     public static void main( String[] args ) {
         //Set the game parameters
         GameConfiguration parameters = new GameConfiguration();
-        parameters.setConfigurationFiles(parameters.chooseDifficulty());
-        parameters.setBacASableMode();
+        parameters.setConfigurationFiles(parameters.chooseDifficulty(), parameters.chooseMode());
+        parameters.initialization();
 
         Year year = new Year(parameters);
         year.getGame().printScenario();
