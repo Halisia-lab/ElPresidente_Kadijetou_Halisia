@@ -1,4 +1,6 @@
 
+    //changer les evenements et leurs choix (+ conséquences) avec des themes indépendants
+    //copier coller les textes dans medium et hard et adapter les consequences
     {
       "values" : {
         "scenario_1" : "",

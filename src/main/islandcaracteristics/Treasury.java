@@ -1,5 +1,4 @@
 package islandcaracteristics;
-import java.util.Scanner;
 
 public class Treasury {
 

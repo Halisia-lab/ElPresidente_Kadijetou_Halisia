@@ -2,7 +2,6 @@
 {
   "values" : {
     "scenario_1" : "",
-    "scenario_2" : "",
     "global_satisfaction_required" : 40,
     "events" : [
       {

@@ -1,20 +1,23 @@
 package islandcaracteristics;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
+import factions.Faction;
 import game.GameConfiguration;
 import org.junit.Test;
+import year.Year;
+
+import java.util.Scanner;
 
 public class AppTest {
-
+    private Year year;
     private GameConfiguration parameters;
 
     @Test
     public void setUp()
     {
-        //kadIsland.addFactions();
         parameters = new GameConfiguration();
+        year = new Year(parameters);
         parameters.initialization();
     }
 
@@ -42,5 +45,32 @@ public class AppTest {
         assertEquals(true, parameters.getIsland().checkPercentages());
     }
 
+    @Test
+    public void testGetGlobalSatsfaction() {
+        setUp();
+        assertEquals(56.25, parameters.getIsland().getGlobalSatisfaction(), 0.0001);
+    }
 
+    @Test
+    public void testIsGlobalSatisfaction() {
+        setUp();
+        assertEquals(true, parameters.isGlobalSatisfaction());
+    }
+
+    @Test
+    public void testRandomBirthsRepartition() {
+        setUp();
+        assertEquals("0 births were counted.", parameters.getIsland().randomBirthsRepartition());
+    }
+
+    @Test
+    public void testAskWichFaction() {
+        setUp();
+        Scanner sc = new Scanner(System.in);
+        Faction faction = parameters.getIsland().getFactions().get(5);
+        int choice = sc.nextInt();
+        assertEquals(faction, year.askWhichFaction());
+
+
+    }
 }

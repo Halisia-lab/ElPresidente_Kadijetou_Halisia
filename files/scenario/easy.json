@@ -5,7 +5,7 @@
         "global_satisfaction_required" : 10,
         "events" : [
           {
-            "event": "1.You notice that some of the foreigners seem to want to grab the island wealth",
+            "event": "You notice that some of the foreigners seem to want to grab the island wealth",
             "season": "",
             "choices": [
               {
@@ -39,7 +39,7 @@
 
           },
           {
-            "event": "2.In these heat days, the agriculture is less productive. Resources are lower with the castaways coming, what to do ?",
+            "event": "In these heat days, the agriculture is less productive. Resources are lower with the castaways coming, what to do ?",
             "season": "",
             "choices": [
               {
@@ -80,7 +80,7 @@
 
           },
           {
-            "event": "3.Heavy rains have been forecast, most of the time flooding occurs just after",
+            "event": "Heavy rains have been forecast, most of the time flooding occurs just after",
             "season": "",
             "choices": [
               {
@@ -135,7 +135,7 @@
 
           },
           {
-            "event": "5.The castaways ask you to increase the tourist activity of the island",
+            "event": "The castaways ask you to increase the tourist activity of the island",
             "season": "",
             "choices": [
               {

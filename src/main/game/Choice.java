@@ -2,10 +2,8 @@ package game;
 
 import factions.Faction;
 import islandcaracteristics.*;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
+import org.json.simple.JSONObject;
 
 import static java.lang.Math.toIntExact;
 
@@ -26,16 +24,8 @@ public class Choice {
         this.title = title;
     }
 
-    public JSONObject getPositiveImpacts() {
-        return positiveImpacts;
-    }
-
     public void setPositiveImpacts(JSONObject positiveImpacts) {
         this.positiveImpacts = positiveImpacts;
-    }
-
-    public JSONObject getNegativeImpacts() {
-        return negativeImpacts;
     }
 
     public void setNegativeImpacts(JSONObject negativeImpacts) {
@@ -117,5 +107,4 @@ public class Choice {
             }
         }
     }
-
 }

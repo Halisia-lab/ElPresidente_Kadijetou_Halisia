@@ -1,9 +1,5 @@
 package game;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import year.SeasonEnum;
-
 import java.util.ArrayList;
 
 public class Event {
@@ -17,10 +13,6 @@ public class Event {
 
     public String getTitle() {
         return title;
-    }
-
-    public String getSeason() {
-        return season;
     }
 
     public ArrayList<Choice> getChoices() {

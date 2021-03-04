@@ -1,7 +1,6 @@
 package factions;
-import java.util.ArrayList;
 
-public abstract class Faction {
+public abstract class  Faction {
     private String name;
     private int satisfaction;
     private int numberOfPartisans;
@@ -54,6 +53,4 @@ public abstract class Faction {
             this.satisfaction = 0;
         }
     }
-
-
 }

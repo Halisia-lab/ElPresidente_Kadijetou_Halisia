@@ -11,7 +11,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import year.Year;
 
 import static java.lang.Math.toIntExact;
 
@@ -19,7 +18,7 @@ import static java.lang.Math.toIntExact;
 public class GameConfiguration {
 
     private int difficulty;
-    private int mode; //sandbox = 1/scenario = 2
+    private int mode; //sandbox = 1 - scenario = 2
     private Island island;
     private JSONObject initializationFile;
     private JSONObject configurationFile;
@@ -32,32 +31,12 @@ public class GameConfiguration {
         this.island = new Island();
     }
 
-    public JSONObject getInitializationFile() {
-        return initializationFile;
-    }
-
-    public JSONObject getConfigurationFile() {
-        return configurationFile;
-    }
-
     public Island getIsland() {
         return island;
     }
 
-    public String getScenario() {
-        return scenario;
-    }
-
     public JSONArray getEvents() {
         return events;
-    }
-
-    public int getGlobalSatisfaction() {
-        return globalSatisfaction;
-    }
-
-    public JSONArray getEndOfYear() {
-        return endOfYear;
     }
 
     public int getMode() {
@@ -66,21 +45,19 @@ public class GameConfiguration {
 
     public void initialization() {
         JSONParser jsonParser = new JSONParser();
-
         try (FileReader reader = new FileReader("files/default_values.json")) {
             Object obj = jsonParser.parse(reader);
-            JSONArray bacASableArray = (JSONArray) obj;
+            JSONArray default_values = (JSONArray) obj;
 
-            //Iterate over employee array
-            bacASableArray.forEach(bacASable -> importBacASableValues((JSONObject) bacASable));
+            default_values.forEach(values -> importDefaultValues((JSONObject) values));
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }
 
-    private void importBacASableValues(JSONObject bacASable) {
-        this.initializationFile = (JSONObject) bacASable.get("values");
+    private void importDefaultValues(JSONObject values) {
+        this.initializationFile = (JSONObject) values.get("values");
 
         int satisfaction = toIntExact((Long) this.initializationFile.get("satisfaction"));
         int satisfactionLoyalists = toIntExact((Long) this.initializationFile.get("satisfaction_loyalists"));
@@ -162,12 +139,9 @@ public class GameConfiguration {
         }
 
         try (FileReader reader = new FileReader(fileName)) {
-            //Read JSON file
             Object obj = jsonParser.parse(reader);
 
             JSONObject fileObject = (JSONObject) obj;
-
-
             parseFile(fileObject);
 
         } catch (IOException | ParseException e) {
@@ -187,7 +161,7 @@ public class GameConfiguration {
         System.out.println(this.scenario);
     }
 
-    public Event createEvent(int index) {
+    public Event createEvent(int index) { //to get the event at the position "index" in the array and set its parameters
         JSONObject eventObject = (JSONObject) this.events.get(index);
 
         Event event = new Event();
@@ -204,7 +178,7 @@ public class GameConfiguration {
         return event;
     }
 
-    public ArrayList<Choice> createEventChoices(JSONArray JSONchoices) {
+    public ArrayList<Choice> createEventChoices(JSONArray JSONchoices) { //to set an event's choices and set their parameters
         ArrayList<Choice> choices = new ArrayList<Choice>();
         for (int i = 0; i < JSONchoices.size(); i++) {
             JSONObject choiceObject = (JSONObject) JSONchoices.get(i);
@@ -232,24 +206,4 @@ public class GameConfiguration {
         }
         return isGlobalSatisfaction;
     }
-
-    public Boolean replay() {
-        Boolean correctAnswer = false;
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Do you want replay ? yes/no");
-            String choice = sc.next();
-            while (!(choice.equals("yes") || choice.equals("no"))) {
-
-                System.out.println("Please answer \"yes\" or \"no\"");
-                choice = sc.next();
-            }
-
-        if(choice.equals("yes")) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
 }

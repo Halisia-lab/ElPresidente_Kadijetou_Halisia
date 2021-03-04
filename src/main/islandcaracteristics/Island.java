@@ -59,40 +59,8 @@ public class Island {
         return treasury;
     }
 
-    public int getPurchasedFoodUnits() {
-        return purchasedFoodUnits;
-    }
-
-    public Communist getCommunists() {
-        return communists;
-    }
-
-    public Capitalist getCapitalists() {
-        return capitalists;
-    }
-
-    public Ecologist getEcologists() {
-        return ecologists;
-    }
-
-    public Liberal getLiberals() {
-        return liberals;
-    }
-
     public Loyalist getLoyalists() {
         return loyalists;
-    }
-
-    public Militarist getMilitarists() {
-        return militarists;
-    }
-
-    public Nationalist getNationalists() {
-        return nationalists;
-    }
-
-    public Religious getReligious() {
-        return religious;
     }
 
     public int calculateFoodUnits() {
@@ -151,7 +119,7 @@ public class Island {
         }
     }
 
-    public String  randomPartisansElimination() {
+    public String  randomPartisansElimination() { //when there are too much food units
         System.out.println("Food units are missing.. some partisans will be eliminated now.");
         int extraPartisans = getNumberOfPartisans() - (this.calculateFoodUnits() / FOOD_UNIT_PER_PARTISAN);
         if(extraPartisans < 0) {
@@ -170,7 +138,7 @@ public class Island {
         return numberOfEliminations + " partisans have been eliminated.";
     }
 
-    public void  randomPartisansElimination(int number) {
+    public void  randomPartisansElimination(int number) { //used when one negative impact decreases the population
         double extraPartisans = (number / 100) * this.getNumberOfPartisans();
         if(extraPartisans < 0) {
             extraPartisans = 0;
@@ -187,7 +155,7 @@ public class Island {
         }
     }
 
-    public String randomBirthsRepartition() {
+    public String randomBirthsRepartition() { //when there is too much agriculture only
         System.out.println("There is a lot of agriculture ! New births are coming...");
         double randomPercentage = ThreadLocalRandom.current().nextInt(1, 10 + 1);
         double extraPartisans = (randomPercentage / 100) * this.getNumberOfPartisans();
@@ -200,7 +168,7 @@ public class Island {
         return (int) numberOfBirths + " births were counted.";
     }
 
-    public void randomBirthsRepartition(int number) {
+    public void randomBirthsRepartition(int number) { //used when one negative impact increases the population
 
         double extraPartisans = (number / 100) * this.getNumberOfPartisans();
         int numberOfBirths = (int)extraPartisans;
@@ -249,6 +217,5 @@ public class Island {
             System.out.println(this.getLoyalists().getName() + " has -" + loyalistsSatisfactionDecreased +"% satisfaction... " );
             System.out.println(this.treasury.getMoneyAvailable() + "$ are left.");
         }
-
     }
 }

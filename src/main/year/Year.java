@@ -3,7 +3,6 @@ package year;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-
 import factions.Faction;
 import game.Choice;
 import game.Event;
@@ -20,11 +19,6 @@ public class Year {
         this.game = game;
         this.currentEvent = 0;
     }
-
-    public SeasonEnum getSeason() {
-        return this.season;
-    }
-
     public GameConfiguration getGame() {
         return game;
     }
@@ -34,12 +28,14 @@ public class Year {
             System.out.println("--------------------------------------------\nWE ARE IN " + season + "\n");
             this.game.getIsland().printFactions();
             Event newEvent = new Event();
-            if(this.game.getMode() == 1) {
+            if(this.game.getMode() == 1) { //if it's the sandbox mode
                 newEvent = printRandomEvent();
-            } else {
+            } else { //if it's the scenario mode
                 newEvent = printNextEvent();
             }
             int choiceNumber = chooseAChoice(newEvent) - 1;
+
+            //applying all consequences
             newEvent.getChoices().get(choiceNumber).applyImpacts(game.getIsland());
             newEvent.getChoices().get(choiceNumber).applyImpacts(game.getIsland().getAgriculture());
             newEvent.getChoices().get(choiceNumber).applyImpacts(game.getIsland().getIndustry());
@@ -68,6 +64,7 @@ public class Year {
     }
 
     public Event printNextEvent() {
+        int eventsLength = this.game.getEvents().size();
         Event event = this.game.createEvent(this.currentEvent);
         System.out.println(event.getTitle());
         for (Choice choice : event.getChoices()) {
@@ -75,6 +72,9 @@ public class Year {
         }
         System.out.println("");
         this.currentEvent++;
+        if(this.currentEvent == eventsLength - 1) {
+            this.currentEvent = 0;
+        }
         return event;
     }
 
@@ -96,7 +96,7 @@ public class Year {
         return choice;
     }
 
-    public Faction askWhichFaction() {
+    public Faction askWhichFaction() { //used when the user decide to organize a bribe
         Boolean correctAnswer = false;
         int choice = 0, factionsLength = this.game.getIsland().getFactions().size();
         Scanner sc = new Scanner(System.in);
@@ -113,14 +113,6 @@ public class Year {
             }
         }
         return this.game.getIsland().getFactions().get(choice -1);
-    }
-
-    public int askQuantity() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("How many food units do you want ? ");
-        int quantity = sc.nextInt();
-
-        return quantity;
     }
 
 
