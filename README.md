@@ -10,3 +10,7 @@ All the Island details will be shown at each season, so that you can see the tre
 It continues until the end of the year, and then a new year will start until you lose...  
 You lose when the average satisfaction is under the satisfaction required. In the easy mode, you need more than 10%, in the medium one, more than 25%, and in the hard one, more than 40%. 
 
+## Code description 
+The project is divided into 4 packages : Game - Faction - Island Caracteristics - Year  
+
+### Game 
