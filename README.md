@@ -14,3 +14,12 @@ You lose when the average satisfaction is under the satisfaction required. In th
 The project is divided into 4 packages : Game - Faction - Island Caracteristics - Year  
 
 ### Game 
+
+This is where we find the App file, and the classes related to the functionement of the game.
+
+#### GameConfiguration
+This is where we set all parameters of the game. Events are created from the different files, and all the corresponding choices. 
+#### Event 
+Each event from the configuration file is converted in a Event object to have a better usage.
+#### Choice
+Each choice of an event is converted in a Choice Object, with its impacts.
