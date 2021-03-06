@@ -11,7 +11,7 @@ It continues until the end of the year, and then a new year will start until you
 You lose when the average satisfaction is under the satisfaction required. In the easy mode, you need more than 10%, in the medium one, more than 25%, and in the hard one, more than 40%. 
 
 ## Code description 
-The project is divided into 4 packages : Game - Faction - Island Caracteristics - Year  
+The project is divided into 4 packages : Game - Faction - Island Caracteristics - Year  </br></br>
 ![classes](https://user-images.githubusercontent.com/63605419/110224092-f39b2980-7ed8-11eb-80c8-fe0e7d579ab2.jpg)
 
 
