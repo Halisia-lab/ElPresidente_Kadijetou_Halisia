@@ -23,3 +23,37 @@ This is where we set all parameters of the game. Events are created from the dif
 Each event from the configuration file is converted in a Event object to have a better usage.
 #### Choice
 Each choice of an event is converted in a Choice Object, with its impacts.
+
+### Factions
+
+Here are all the classes for each faction. An abstract class is used as a parent of this classes.
+
+### IslandCaracteristics
+
+All informations about the island is reunited in this package.  
+
+#### ActivityArea 
+This is an interfact which is implemented by Industry and Agriculture. Both have a percentage and return us the ressources.
+
+#### Industry 
+ 
+ This class gives us the money given by the indusrty per year.
+ 
+#### Agriculture 
+
+This one gives us the amount of food units given by the agriculture.
+
+#### Treasury
+
+The amount of the treasury is calculated here.
+
+### Year
+
+Seasons events, end of year actions, impact of user choices are managed here. 
+
+#### Year 
+
+With the function "playSeasons" this class calls the functions chronologically to have the printings, the repercussions after each choice.
+
+#### SeasonEnum
+A simple enumeration with the 4 seasons. 
