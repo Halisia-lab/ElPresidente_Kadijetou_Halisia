@@ -1,6 +1,6 @@
 # ElPresidente
 
-El presidente is a small game which looks like Tropico or Reigns. You have the role of the presfeident of an Island, and you have to make some choices during the year.
+El presidente is a small game which looks like Tropico or Reigns. You have the role of the president of an Island, and you have to make some choices during the year.
 
 ## Getting started 
 
