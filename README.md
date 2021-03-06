@@ -31,8 +31,7 @@ Each choice of an event is converted in a Choice Object, with its impacts. For p
 - for the number of partisans, this is the function "randomBirthRepartition" that adds partisansin the Island   
 - for the satisfactions, the function "increaseSatisfaction"  
 - for the industry, agriculture or treasury percentage, the function "setPercentage" with += affectation.  
-</br></br> 
-This is the same functionement for the negative impacts.
+</br></br>This is the same functionement for the negative impacts.
 
 
 ### Factions
