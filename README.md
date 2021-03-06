@@ -13,7 +13,7 @@ You lose when the average satisfaction is under the satisfaction required. In th
 ## Code description 
 Just below is an arborescence of the classes that are used in the project.</br></br>
 ![factions](https://user-images.githubusercontent.com/63605419/110224774-d79a8680-7ede-11eb-9e51-f273ebca6236.png)  
-A year has its GameConfiguration, to set the mode and difficulty. Then a GameConfiguration has its Island, we supposed that if the game is improved, it will be maybe possible to have more than one island to play.  
+A year has its GameConfiguration, to set the mode and difficulty. Then a GameConfiguration has its Island, we suppose that if the game is improved, it will be maybe possible to have more than one island to play.  
 
 The project is divided into 4 packages : Game - Faction - Island Caracteristics - Year  </br></br>
 ![classes](https://user-images.githubusercontent.com/63605419/110224092-f39b2980-7ed8-11eb-80c8-fe0e7d579ab2.jpg)
