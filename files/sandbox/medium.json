@@ -1,24 +1,25 @@
-
 {
   "values" : {
     "scenario_1" : "",
     "global_satisfaction_required" : 25,
     "events" : [
       {
-        "event": "You notice that some of the foreigners seem to want to grab the island wealth",
+        "event": "You notice that some of your political opponents seem to want to grab your sit at the presidential by doing a putsch",
         "season": "",
         "choices": [
           {
             "choice": "1. You order to the militarists to keep an eye on them",
             "positive_impacts":
             {
-              "religious": 5,
-              "nationalists": 10
+              "religious": 10,
+              "liberal": 5,
+              "nationalists": 5
+
             },
             "negative_impacts":
             {
               "militarists": 30,
-              "treasury": 40
+              "treasury": 50
             }
           },
           {
@@ -28,18 +29,18 @@
             },
             "negative_impacts":
             {
-              "militarists": 10,
-              "loyalists": 20,
-              "liberals": 15,
-              "capitalists": 30,
-              "communists": 40
+              "militarists": 5,
+              "loyalists": 5,
+              "liberals": 10,
+              "capitalists": 15,
+              "communists": 15
             }
           }
         ]
 
       },
       {
-        "event": "In these heat days, the agriculture is less productive. Resources are lower with the castaways coming, what to do ?",
+        "event": "In these very hot days, resources are lower due to a big fire, what to do ?",
         "season": "",
         "choices": [
           {
@@ -47,57 +48,57 @@
             "positive_impacts": {},
             "negative_impacts":
             {
-              "treasury": 100,
-              "ecologists": 50
+              "treasury": 125,
+              "ecologists": 40
             }
           },
           {
             "choice": "2. Reduce everyone food portions",
             "positive_impacts":
             {
-              "treasury": 10,
+              "treasury": 15,
               "ecologists": 10
             },
             "negative_impacts":
             {
-              "numberOfPartisans": 10
+              "numberOfPartisans": 5
             }
           },
           {
-            "choice": "3. Stop sharing our resources with the castaways, it's their fault",
+            "choice": "3. Stop sharing our resources with the castaways, it's destiny",
             "positive_impacts":
             {
-              "treasury": 210,
+              "treasury": 80,
               "nationalists": 10
             },
             "negative_impacts":
             {
-              "loyalists": 30,
-              "religious": 35
+              "loyalists": 15,
+              "religious": 20
             }
           }
         ]
 
       },
       {
-        "event": "Heavy rains have been forecast, most of the time flooding occurs just after",
+        "event": "A big virus has been forecast, most of the island is in quarantine",
         "season": "",
         "choices": [
           {
             "choice": "1. Implement security measures and alert the population",
             "positive_impacts": {
-              "communists": 20,
-              "capitalists": 20,
-              "ecologists": 20,
-              "nationalists":15,
-              "militarists": 20,
-              "loyalists": 15,
-              "liberals": 20,
-              "religious": 20
+              "communists": 25,
+              "capitalists": 25,
+              "ecologists": 25,
+              "nationalists":10,
+              "militarists": 15,
+              "loyalists": 10,
+              "liberals": 15,
+              "religious": 15
             },
             "negative_impacts":
             {
-              "treasury": 120
+              "treasury": 125
             }
           },
           {
@@ -106,12 +107,12 @@
             {},
             "negative_impacts":
             {
-              "numberOfPartisans": 10,
-              "treasury": 190,
-              "loyalists": 30,
+              "numberOfPartisans": 15,
+              "treasury": 200,
+              "loyalists": 35,
               "communists": 30,
               "liberals": 30,
-              "nationalists": 20
+              "nationalists": 15
             }
           },
           {
@@ -122,49 +123,48 @@
             },
             "negative_impacts":
             {
-              "numberOfPartisans": 10,
-              "loyalists": 30,
-              "communists": 20,
-              "liberals": 20,
-              "nationalists": 15,
-              "ecologists": 30,
-              "agriculture": 20
+              "numberOfPartisans": 5,
+              "loyalists": 25,
+              "communists": 15,
+              "liberals": 15,
+              "nationalists": 10,
+              "ecologists": 25,
+              "agriculture": 25
             }
           }
         ]
 
       },
       {
-        "event": "The castaways ask you to increase the tourist activity of the island",
+        "event": "The castaways ask you to increase women political participation in the island",
         "season": "",
         "choices": [
           {
-            "choice": "1. No, I don't want to see tourists at all",
+            "choice": "1. No, I don't want to see women at all",
             "positive_impacts": {
-              "nationalists": 15,
-              "ecologists": 10
-            },
-            "negative_impacts":
-            {
               "militarists": 10,
-              "religious": 20,
-              "liberals": 25
+              "religious": 10,
+              "nationalists": 10
+            },
+            "negative_impacts": {
+              "liberals": 15,
+              "loyalists": 15
             }
           },
           {
-            "choice": "2. That is true that this place is missing some animation, let's do it !",
+            "choice": "2. That is true that this place is missing some diversity, let's do it !",
             "positive_impacts":
             {
-              "capitalists": 20,
-              "communists": 15,
-              "loyalists": 10,
-              "religious": 10,
-              "treasury": 100,
+              "capitalists": 15,
+              "communists": 10,
+              "loyalists": 15,
+              "religious": 5,
+              "treasury": 80,
               "industry": 10
             },
             "negative_impacts":
             {
-              "nationalists": 20
+              "nationalists": 10
 
             }
           },
@@ -172,14 +172,14 @@
             "choice": "3. This decision belongs to the citizens, I trust them",
             "positive_impacts":
             {
-              "communists": 20,
-              "capitalists": 20,
-              "ecologists": 20,
+              "communists": 25,
+              "capitalists": 15,
+              "ecologists": 25,
               "nationalists":15,
-              "militarists": 10,
+              "militarists": 15,
               "loyalists": 15,
-              "liberals": 10,
-              "religious": 10
+              "liberals": 15,
+              "religious": 15
             },
             "negative_impacts":
             {}
@@ -188,61 +188,61 @@
 
       },
       {
-        "event": "You just found an item of a phenomenal value which seems to belongs to castaways",
+        "event": "You just found a phenomenal idea, you want to open some casinos to create the 'LasVengas'",
         "season": "",
         "choices": [
           {
             "choice": "1. Take the opportunity to develop the island's industry activity",
             "positive_impacts": {
-              "industry": 35,
-              "nationalists": 20,
-              "liberals": 15
+              "industry": 30,
+              "nationalists": 15,
+              "liberals": 10
             },
             "negative_impacts":
             {
-              "militarists": 10,
-              "religious": 10,
-              "ecologists": 35,
+              "militarists": 15,
+              "religious": 15,
+              "ecologists": 40,
               "treasury": 150
             }
           },
           {
-            "choice": "2. Don't touch..a president don't steal",
+            "choice": "2. You made a nightmare about a casino called 'Don't come here'. It was a sign so you are no more in.",
             "positive_impacts":
             {
-              "religious": 10,
-              "loyalists": 10,
-              "ecologists": 30
+              "religious": 5,
+              "loyalists": 15,
+              "ecologists": 25
             },
             "negative_impacts":
             {}
           },
           {
-            "choice": "3. Take the opportunity to import even more food units",
+            "choice": "3. Take the opportunity to make even more money laundering",
             "positive_impacts":
             {
               "numberOfPartisans": 10,
-              "agriculture": 15
+              "agriculture": 10
             },
             "negative_impacts":
             {
-              "ecologists": 25,
-              "treasury": 90
+              "ecologists": 10,
+              "treasury": 60
             }
           }
         ]
 
       },
       {
-        "event": "Christmas is coming, this celebration is unknow on the island and castaways want you to organize events",
+        "event": "Your birthday is coming, this date is not enough known on the island and castaways want you to organize events",
         "season": "winter",
         "choices": [
           {
-            "choice": "1. Trust them, citizens will be glad",
+            "choice": "1. Trust them, citizens will be glad to know about your birthday",
             "positive_impacts": {
               "nationalists": 10,
               "liberals": 10,
-              "religious": 20,
+              "religious": 10,
               "communists": 10,
               "capitalists": 10,
               "ecologists": 10,
@@ -251,32 +251,32 @@
             },
             "negative_impacts":
             {
-              "treasury": 90
+              "treasury": 80
             }
           },
           {
-            "choice": "2. Just a few things because christmas costs a lot of money",
+            "choice": "2. Just a few of them because you prefer to celebrate your birthday with people who trust you",
             "positive_impacts":
             {
               "loyalists": 10,
-              "ecologists": 30,
+              "ecologists": 20,
               "nationalists": 10
             },
             "negative_impacts":
             {
-              "treasury": 30,
-              "religious": 15
+              "treasury": 40,
+              "religious": 20
             }
           },
           {
-            "choice": "3. No, there is no reason",
+            "choice": "3. No, there is no reason, they don't bring you any gifts",
             "positive_impacts":
             {},
             "negative_impacts":
             {
-              "religious": 30,
-              "militarists": 10,
-              "capitalists": 10,
+              "religious": 20,
+              "militarists": 15,
+              "capitalists": 15,
               "loyalists": 10
             }
           }

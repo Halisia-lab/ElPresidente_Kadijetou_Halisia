@@ -1,13 +1,10 @@
-
-    //changer les evenements et leurs choix (+ conséquences) avec des themes indépendants
-    //copier coller les textes dans medium et hard et adapter les consequences
-    {
+ {
       "values" : {
         "scenario_1" : "",
         "global_satisfaction_required" : 10,
         "events" : [
           {
-            "event": "You notice that some of the foreigners seem to want to grab the island wealth",
+            "event": "You notice that some of your political opponents seem to want to grab your sit at the presidential by doing a putsch",
             "season": "",
             "choices": [
               {
@@ -15,7 +12,9 @@
                 "positive_impacts":
                 {
                   "religious": 15,
+                  "liberal": 10,
                   "nationalists": 10
+
                 },
               "negative_impacts":
                 {
@@ -41,7 +40,7 @@
 
           },
           {
-            "event": "In these heat days, the agriculture is less productive. Resources are lower with the castaways coming, what to do ?",
+            "event": "In these very hot days, resources are lower due to a big fire, what to do ?",
             "season": "",
             "choices": [
               {
@@ -66,7 +65,7 @@
                 }
               },
               {
-                "choice": "3. Stop sharing our resources with the castaways, it's their fault",
+                "choice": "3. Stop sharing our resources with the castaways, it's destiny",
                 "positive_impacts":
                 {
                   "treasury": 200,
@@ -82,7 +81,7 @@
 
           },
           {
-            "event": "Heavy rains have been forecast, most of the time flooding occurs just after",
+            "event": "A big virus has been forecast, most of the island is in quarantine",
             "season": "",
             "choices": [
               {
@@ -137,24 +136,23 @@
 
           },
           {
-            "event": "The castaways ask you to increase the tourist activity of the island",
+            "event": "The castaways ask you to increase women political participation in the island",
             "season": "",
             "choices": [
               {
-                "choice": "1. No, I don't want to see tourists at all",
+                "choice": "1. No, I don't want to see women at all",
                 "positive_impacts": {
-                  "nationalists": 15,
-                  "ecologists": 20
+                  "militarists": 10,
+                  "religious": 10,
+                  "nationalists": 15
                 },
-                "negative_impacts":
-                  {
-                    "militarists": 10,
-                    "religious": 10,
-                    "liberals": 15
+                "negative_impacts": {
+                  "liberals": 20,
+                  "loyalists": 20
                   }
               },
               {
-                "choice": "2. That is true that this place is missing some animation, let's do it !",
+                "choice": "2. That is true that this place is missing some diversity, let's do it !",
                 "positive_impacts":
                 {
                   "capitalists": 20,
@@ -190,7 +188,7 @@
 
           },
           {
-            "event": "You just found an item of a phenomenal value which seems to belongs to castaways",
+            "event": "You just found a phenomenal idea, you want to open some casinos to create the 'LasVengas'",
             "season": "",
             "choices": [
               {
@@ -209,7 +207,7 @@
                   }
               },
               {
-                "choice": "2. Don't touch..a president don't steal",
+                "choice": "2. You made a nightmare about a casino called 'Don't come here'. It was a sign so you are no more in.",
                 "positive_impacts":
                 {
                   "religious": 10,
@@ -220,7 +218,7 @@
                 {}
               },
               {
-                "choice": "3. Take the opportunity to import even more food units",
+                "choice": "3. Take the opportunity to make even more money laundering",
                 "positive_impacts":
                 {
                   "numberOfPartisans": 10,
@@ -236,11 +234,11 @@
 
           },
           {
-            "event": "Christmas is coming, this celebration is unknow on the island and castaways want you to organize events",
+            "event": "Your birthday is coming, this date is not enough known on the island and castaways want you to organize events",
             "season": "winter",
             "choices": [
               {
-                "choice": "1. Trust them, citizens will be glad",
+                "choice": "1. Trust them, citizens will be glad to know about your birthday",
                 "positive_impacts": {
                   "nationalists": 10,
                   "liberals": 10,
@@ -257,7 +255,7 @@
                   }
               },
               {
-                "choice": "2. Just a few things because christmas costs a lot of money",
+                "choice": "2. Just a few of them because you prefer to celebrate your birthday with people who trust you",
                 "positive_impacts":
                 {
                   "loyalists": 10,
@@ -271,7 +269,7 @@
                 }
               },
               {
-                "choice": "3. No, there is no reason",
+                "choice": "3. No, there is no reason, they don't bring you any gifts",
                 "positive_impacts":
                 {},
                 "negative_impacts":
